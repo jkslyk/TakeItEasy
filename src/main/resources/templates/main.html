@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TakeItEasy</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://partner.googleadservices.com/gampad/cookie.js?domain=city.travel&amp;callback=_gfp_s_&amp;client=ca-pub-2303689458444474&amp;cookie=ID%3D136cc20ec58ebe2d-22f57bd869cd00a9%3AT%3D1648666288%3ART%3D1648666288%3AS%3DALNI_MabTK1jsLuBNAwqlHiG6mku4zfgIw"></script><script async="" src="https://mc.yandex.ru/metrika/tag.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/gtm/js?id=GTM-TT4W2FR&amp;t=gtag_UA_65329792_1&amp;cid=529071738.1648666367"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202203230101/show_ads_impl_fy2019.js" id="google_shimpl"></script><script defer="" src="https://www.googletagmanager.com/gtm.js?id=GTM-KLCZCS9"></script><script type="text/javascript"></script>
+    <script src="https://googleads.g.doubleclick.net/pagead/viewthroughconversion/848587764/?random=1648666388442&amp;cv=9&amp;fst=1648666388442&amp;num=1&amp;guid=ON&amp;resp=GooglemKTybQhCsO&amp;eid=376635470%2C375603261&amp;u_h=720&amp;u_w=1280&amp;u_ah=720&amp;u_aw=1280&amp;u_cd=24&amp;u_his=1&amp;u_tz=360&amp;u_java=false&amp;u_nplug=5&amp;u_nmime=2&amp;sendb=1&amp;ig=1&amp;data=flight_pagetype%3Dhome&amp;frm=0&amp;url=https%3A%2F%2Fcity.travel%2Favia%3Fpartner%3Dadmitad%26marker%3D23903556e980d494c9b51ef6d660e39b%26uid%3D23903556e980d494c9b51ef6d660e39b%26admitad_uid%3D23903556e980d494c9b51ef6d660e39b&amp;tiba=City.Travel%20%E2%80%94%20%D0%B4%D0%B5%D1%88%D1%91%D0%B2%D1%8B%D0%B5%20%D0%B0%D0%B2%D0%B8%D0%B0%D0%B1%D0%B8%D0%BB%D0%B5%D1%82%D1%8B%20%D0%B8%20%D0%BE%D1%82%D0%B5%D0%BB%D0%B8&amp;hn=www.googleadservices.com&amp;rfmt=3&amp;fmt=4"></script><meta http-equiv="origin-trial" content="AxujKG9INjsZ8/gUq8+dTruNvk7RjZQ1oFhhgQbcTJKDnZfbzSTE81wvC2Hzaf3TW4avA76LTZEMdiedF1vIbA4AAABueyJvcmlnaW4iOiJodHRwczovL2ltYXNkay5nb29nbGVhcGlzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0="><meta http-equiv="origin-trial" content="Azuce85ORtSnWe1MZDTv68qpaW3iHyfL9YbLRy0cwcCZwVnePnOmkUJlG8HGikmOwhZU22dElCcfrfX2HhrBPAkAAAB7eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A16nvcdeoOAqrJcmjLRpl1I6f3McDD8EfofAYTt/P/H4/AWwB99nxiPp6kA0fXoiZav908Z8etuL16laFPUdfQsAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="AxBHdr0J44vFBQtZUqX9sjiqf5yWZ/OcHRcRMN3H9TH+t90V/j3ENW6C8+igBZFXMJ7G3Pr8Dd13632aLng42wgAAACBeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiVHJ1c3RUb2tlbnMiLCJleHBpcnkiOjE2NTI3NzQ0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta http-equiv="origin-trial" content="A88BWHFjcawUfKU3lIejLoryXoyjooBXLgWmGh+hNcqMK44cugvsI5YZbNarYvi3roc1fYbHA1AVbhAtuHZflgEAAAB2eyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IlRydXN0VG9rZW5zIiwiZXhwaXJ5IjoxNjUyNzc0NDAwLCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlfQ=="><meta http-equiv="origin-trial" content="A8FHS1NmdCwGqD9DwOicnHHY+y27kdWfxKa0YHSGDfv0CSpDKRHTQdQmZVPDUdaFWUsxdgVxlwAd6o+dhJykPA0AAACWeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A8zdXi6dr1hwXEUjQrYiyYQGlU3557y5QWDnN0Lwgj9ePt66XMEvNkVWOEOWPd7TP9sBQ25X0Q15Lr1Nn4oGFQkAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><meta http-equiv="origin-trial" content="A4/Htern2udN9w3yJK9QgWQxQFruxOXsXL7cW60DyCl0EZFGCSme/J33Q/WzF7bBkVvhEWDlcBiUyZaim5CpFQwAAACceyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQ29udmVyc2lvbk1lYXN1cmVtZW50IiwiZXhwaXJ5IjoxNjQzMTU1MTk5LCJpc1N1YmRvbWFpbiI6dHJ1ZSwiaXNUaGlyZFBhcnR5Ijp0cnVlLCJ1c2FnZSI6InN1YnNldCJ9"><link rel="preload" href="https://adservice.google.kz/adsid/integrator.js?domain=city.travel" as="script"><script type="text/javascript" src="https://adservice.google.kz/adsid/integrator.js?domain=city.travel"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=city.travel" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=city.travel"></script>
+</head>
+<body>
+<!--Header-->
+<header class="header" id="header">
+    <div class="header header-with-banner">
+        <div class="container">
+            <div class="flex">
+                <div class="logo visible-lg">
+                    <a href="/">TakeItEasy</a>
+                </div>
+                <div class="menu-icon-wrap hidden-lg">
+                    <a href="" class="menu-icon"></a>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li class="visible-lg-inline-block"><a href="">About us</a></li>
+                        <li class="active"><a href="">Supports</a></li>
+                        <li class="visible-lg-inline-block"><a href="">Promotions</a></li>
+                    </ul>
+                </div>
+                <div class="lang">
+                    <div class="lang-block">
+                        <div class="lang-current">
+                            <img src="city.travel/images/flag-en.png" alt="">
+                            EN (RUB)
+                            <span class="icon-chevron-down"></span>
+                        </div>
+                        <div class="lang-dropdown" style="display: none;">
+                            <div class="label">Language</div>
+                            <select class="select-language select2-hidden-accessible" name="language" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                <option value="en">English</option>
+                                <option value="ru" selected="">Russian</option>
+                                <option value="kz" selected="">Kazakh</option>
+                            </select>
+                            <span class="selection">
+                                <span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-language-1d-container">
+                                <span class="select2-selection__rendered" id="select2-language-1d-container" title="English">English</span>
+                                    <span class="select2-selection__arrow" role="presentation">
+                                        <b role="presentation"></b>
+                                    </span>
+                                </span>
+                            </span>
+                                <span class="dropdown-wrapper" aria-hidden="true"></span>
+                            </span>
+                            <div class="text-right">
+                                <button class="btn btn-round lang-change">
+                                    <span class="icon icon-ok"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <span class="login-icon">
+                <span class="icon-login"></span>
+            </span>
+                <span class="profile-text">Log in</span>
+                </a>
+                <div class="profile-dropdown" style="display: none;">
+                        <div class="form form-sm">
+                            <form  method="post" action="" onsubmit="return false;">
+                                <div class="reg"><a href="">Registration</a></div>
+                                <div class="form-block">
+                                    <div class="label">E-mail</div>
+                                    <div class="field-block">
+                                        <input type="text" name="user_mail">
+                                        <div class="field-error">This field must be filled</div>
+                                    </div>
+                                </div>
+                                <div class="form-block">
+                                    <div class="label">Password</div>
+                                    <div class="field-block">
+                                        <input type="password" name="user_pwd">
+                                        <div class="field-error">This field must be filled</div>
+                                    </div>
+                                </div>
+                                <div class="forgot"><a href="">Forgot password?</a></div>
+                                <div class="text-right">
+                                    <div class="remember-me">
+                                        <label class="checkbox">
+                                            <input type="checkbox" name="user_remem" checked="">
+                                            <span>Remember me</span>
+                                        </label>
+                                    </div>
+                                    <button class="btn btn-round">
+                                        <span class="icon icon-ok"></span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile2">
+                    <a href="" class="profile-link">
+                        <span class="profile-text">Sign up</span>
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</header>
+<!--Intro-->
+<div class="intro" id="intro">
+    <div class="big-header" id="big-header-avia">
+        <div class="h-tabs-top">
+            <div class="h-tabs-top-aside"></div>
+            <a href="#"  class="h-tabs-top-item active">
+                    <span class="h-tabs-icon">
+                        <span class="icon-plane"></span>
+                    </span>
+                <span class="h-tabs-text">
+                        <span>Flights</span>
+                    </span>
+            </a>
+        </div>
+        <div class="h-tabs">
+            <div class="container">
+
+                <div class="avia-multiform">
+                    <div class="avia-complex-selector">
+                        <div class="acs-go-complex"><a href=""><i class="icon icon-complex"></i> Multi-city</a></div>
+                        <div class="acs-go-simple"><a href=""><i class="icon icon-simple"></i> back to a simple route</a></div>
+                        <div class="acs-minimize"><a href="">hide <i class="icon icon-x"></i></a></div>
+                        <div class="acs-maximize"><a href="">expand <i class="icon icon-chevron-down"></i></a></div>
+                    </div>
+                    <div class="form white acs-simple-form" id="f1">
+                        <div class="h-form-line two-way">
+                            <div class="h-form-line1">
+                                <div class="h-form-there-reverce">
+                                    <div class="there">
+                                        <div class="field-block pic-left info-right">
+                                            <input type="text" placeholder="From" id="from-plane" name="from_plane" value="Almaty" autocomplete="off" class="autocomplete-activefield">
+                                            <input type="hidden" id="from-plane-id" name="from_plane_id" value="ALA">
+                                            <span class="icon icon-plane-up"></span>
+                                            <div class="info-right-text">ALA</div>
+                                        </div>
+                                        <div class="autocomplete-suggestions" style="position: absolute; display: none; width: 250px; max-height: 300px; z-index: 9999;"></div></div>
+                                    <div class="reverce">
+                                        <a href=""><span class="icon icon-reverse"></span></a>
+                                    </div>
+                                </div>
+                                <div class="here">
+                                    <div class="field-block pic-left info-right">
+                                        <input type="text" placeholder="To" id="to-plane" name="to_plane" value="" autocomplete="off" class="autocomplete-activefield">
+                                        <input type="hidden" id="to-plane-id" name="to_plane_id" value="">
+                                        <span class="icon icon-plane-down"></span>
+                                        <div class="info-right-text"></div>
+                                    </div>
+                                    <div class="autocomplete-suggestions" style="position: absolute; display: none; width: 250px; max-height: 300px; z-index: 9999;"></div></div>
+                            </div>
+                            <div class="h-form-line2">
+
+                                <div class="whenz">
+                                    <div class="field-block field-block-sm pic-left field-datepicker">
+                                        <input type="text" placeholder="When" id="datein-plane" class="input-datepicker" value="2 Apr" readonly="">
+                                        <input type="hidden" name="datein_plane" value="02.04.2022" value2="02.04.2022">
+                                        <span class="icon icon-calendar"></span>
+                                        <div class="info-right-text"></div>
+                                        <div class="dropdowns dropdowns-datepicker white-arrow">
+                                            <div class="dropdowns-in">
+                                                <div class="datepics-calendar-dropdown1">
+
+                                                    <div class="date-picker-wrapper single-date  no-shortcuts  no-topbar  inline-wrapper no-gap single-month" unselectable="on" style="display: none; user-select: none;"><div class="month-wrapper" style="width: 200px;">   <table class="month1" cellspacing="0" border="0" cellpadding="0">       <thead>           <tr class="caption">               <th style="width:27px;">                   <span class="prev">                    </span>               </th>               <th colspan="5" class="month-name">march 2022</th>               <th style="width:27px;"><span class="next"> </span>               </th>           </tr>           <tr class="week-name"><th>mo</th><th>tu</th><th>we</th><th>th</th><th>fr</th><th>sa</th><th>su</th>       </tr></thead>       <tbody><tr><td><div time="1645989111700" data-tooltip="" class="day lastMonth  invalid ">28</div></td><td><div time="1646075511700" data-tooltip="" class="day toMonth  invalid ">1</div></td><td><div time="1646161911700" data-tooltip="" class="day toMonth  invalid ">2</div></td><td><div time="1646248311700" data-tooltip="" class="day toMonth  invalid ">3</div></td><td><div time="1646334711700" data-tooltip="" class="day toMonth  invalid ">4</div></td><td><div time="1646421111700" data-tooltip="" class="day toMonth  invalid ">5</div></td><td><div time="1646507511700" data-tooltip="" class="day toMonth  invalid ">6</div></td></tr><tr><td><div time="1646593911700" data-tooltip="" class="day toMonth  invalid ">7</div></td><td><div time="1646680311700" data-tooltip="" class="day toMonth  invalid ">8</div></td><td><div time="1646766711700" data-tooltip="" class="day toMonth  invalid ">9</div></td><td><div time="1646853111700" data-tooltip="" class="day toMonth  invalid ">10</div></td><td><div time="1646939511700" data-tooltip="" class="day toMonth  invalid ">11</div></td><td><div time="1647025911700" data-tooltip="" class="day toMonth  invalid ">12</div></td><td><div time="1647112311700" data-tooltip="" class="day toMonth  invalid ">13</div></td></tr><tr><td><div time="1647198711700" data-tooltip="" class="day toMonth  invalid ">14</div></td><td><div time="1647285111700" data-tooltip="" class="day toMonth  invalid ">15</div></td><td><div time="1647371511700" data-tooltip="" class="day toMonth  invalid ">16</div></td><td><div time="1647457911700" data-tooltip="" class="day toMonth  invalid ">17</div></td><td><div time="1647544311700" data-tooltip="" class="day toMonth  invalid ">18</div></td><td><div time="1647630711700" data-tooltip="" class="day toMonth  invalid ">19</div></td><td><div time="1647717111700" data-tooltip="" class="day toMonth  invalid ">20</div></td></tr><tr><td><div time="1647803511700" data-tooltip="" class="day toMonth  invalid ">21</div></td><td><div time="1647889911700" data-tooltip="" class="day toMonth  invalid ">22</div></td><td><div time="1647976311700" data-tooltip="" class="day toMonth  invalid ">23</div></td><td><div time="1648062711700" data-tooltip="" class="day toMonth  invalid ">24</div></td><td><div time="1648149111700" data-tooltip="" class="day toMonth  invalid ">25</div></td><td><div time="1648235511700" data-tooltip="" class="day toMonth  invalid ">26</div></td><td><div time="1648321911700" data-tooltip="" class="day toMonth  invalid ">27</div></td></tr><tr><td><div time="1648408311700" data-tooltip="" class="day toMonth  invalid ">28</div></td><td><div time="1648494711700" data-tooltip="" class="day toMonth  invalid ">29</div></td><td><div time="1648581111700" data-tooltip="" class="day toMonth  invalid ">30</div></td><td><div time="1648667511700" data-tooltip="" class="day toMonth  valid real-today">31</div></td><td><div time="1648753911700" data-tooltip="" class="day nextMonth  valid ">1</div></td><td><div time="1648840311700" data-tooltip="" class="day nextMonth  valid ">2</div></td><td><div time="1648926711700" data-tooltip="" class="day nextMonth  valid ">3</div></td></tr></tbody>   </table><div style="clear:both;height:0;font-size:0;"></div><div class="time"><div class="time1"></div></div><div style="clear:both;height:0;font-size:0;"></div></div><div class="footer"></div><div class="date-range-length-tip"></div></div></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="whenz-back">
+                                    <div class="field-block field-block-sm pic-left field-datepicker">
+                                        <input type="text" placeholder="Return" id="dateout-plane" class="input-datepicker" value="" readonly="">
+                                        <input type="hidden" name="dateout_plane" value="" value2="">
+                                        <span class="icon icon-calendar"></span>
+                                        <div class="info-right-text"></div>
+                                        <div class="dropdowns dropdowns-datepicker white-arrow">
+                                            <div class="dropdowns-in">
+                                                <div class="datepics-calendar-dropdown2">
+
+                                                    <div class="date-picker-wrapper single-date  no-shortcuts  no-topbar  inline-wrapper no-gap single-month" unselectable="on" style="display: none; user-select: none;"><div class="month-wrapper" style="width: 200px;">   <table class="month1" cellspacing="0" border="0" cellpadding="0">       <thead>           <tr class="caption">               <th style="width:27px;">                   <span class="prev">                    </span>               </th>               <th colspan="5" class="month-name">april 2022</th>               <th style="width:27px;"><span class="next"> </span>               </th>           </tr>           <tr class="week-name"><th>mo</th><th>tu</th><th>we</th><th>th</th><th>fr</th><th>sa</th><th>su</th>       </tr></thead>       <tbody><tr><td><div time="1648404000000" data-tooltip="" class="day lastMonth  invalid ">28</div></td><td><div time="1648490400000" data-tooltip="" class="day lastMonth  invalid ">29</div></td><td><div time="1648576800000" data-tooltip="" class="day lastMonth  invalid ">30</div></td><td><div time="1648663200000" data-tooltip="" class="day lastMonth  invalid real-today">31</div></td><td><div time="1648749600000" data-tooltip="" class="day toMonth  invalid ">1</div></td><td><div time="1648836000000" data-tooltip="" class="day toMonth  valid ">2</div></td><td><div time="1648922400000" data-tooltip="" class="day toMonth  valid ">3</div></td></tr><tr><td><div time="1649008800000" data-tooltip="" class="day toMonth  valid ">4</div></td><td><div time="1649095200000" data-tooltip="" class="day toMonth  valid ">5</div></td><td><div time="1649181600000" data-tooltip="" class="day toMonth  valid ">6</div></td><td><div time="1649268000000" data-tooltip="" class="day toMonth  valid ">7</div></td><td><div time="1649354400000" data-tooltip="" class="day toMonth  valid ">8</div></td><td><div time="1649440800000" data-tooltip="" class="day toMonth  valid ">9</div></td><td><div time="1649527200000" data-tooltip="" class="day toMonth  valid ">10</div></td></tr><tr><td><div time="1649613600000" data-tooltip="" class="day toMonth  valid ">11</div></td><td><div time="1649700000000" data-tooltip="" class="day toMonth  valid ">12</div></td><td><div time="1649786400000" data-tooltip="" class="day toMonth  valid ">13</div></td><td><div time="1649872800000" data-tooltip="" class="day toMonth  valid ">14</div></td><td><div time="1649959200000" data-tooltip="" class="day toMonth  valid ">15</div></td><td><div time="1650045600000" data-tooltip="" class="day toMonth  valid ">16</div></td><td><div time="1650132000000" data-tooltip="" class="day toMonth  valid ">17</div></td></tr><tr><td><div time="1650218400000" data-tooltip="" class="day toMonth  valid ">18</div></td><td><div time="1650304800000" data-tooltip="" class="day toMonth  valid ">19</div></td><td><div time="1650391200000" data-tooltip="" class="day toMonth  valid ">20</div></td><td><div time="1650477600000" data-tooltip="" class="day toMonth  valid ">21</div></td><td><div time="1650564000000" data-tooltip="" class="day toMonth  valid ">22</div></td><td><div time="1650650400000" data-tooltip="" class="day toMonth  valid ">23</div></td><td><div time="1650736800000" data-tooltip="" class="day toMonth  valid ">24</div></td></tr><tr><td><div time="1650823200000" data-tooltip="" class="day toMonth  valid ">25</div></td><td><div time="1650909600000" data-tooltip="" class="day toMonth  valid ">26</div></td><td><div time="1650996000000" data-tooltip="" class="day toMonth  valid ">27</div></td><td><div time="1651082400000" data-tooltip="" class="day toMonth  valid ">28</div></td><td><div time="1651168800000" data-tooltip="" class="day toMonth  valid ">29</div></td><td><div time="1651255200000" data-tooltip="" class="day toMonth  valid ">30</div></td><td><div time="1651341600000" data-tooltip="" class="day nextMonth  valid ">1</div></td></tr></tbody>   </table><div style="clear:both;height:0;font-size:0;"></div><div class="time"><div class="time1"></div></div><div style="clear:both;height:0;font-size:0;"></div></div><div class="footer"></div><div class="date-range-length-tip"></div></div></div>
+                                            </div>
+                                            <div class="dropdowns-top">
+                                                <a href="" class="btn btn-link active">One way only</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="num">
+                                    <div class="field-block field-block-sm pic-left info-right field-datepicker">
+                                        <input type="text" id="dummypeople_plane" class="dummypeople_plane" value="1 pax" readonly="">
+                                        <span class="icon icon-person"></span>
+                                        <div class="info-right-text">Economy</div>
+                                        <input type="hidden" name="class_plane" value="E">
+                                        <div class="dropdowns dropdowns-passenger">
+                                            <div class="dropdowns-top">
+                                                <a href="" rel="E" class="btn btn-link choose-class-plane active">Economy</a>
+                                                <a href="" rel="B" class="btn btn-link choose-class-plane">Business</a>
+                                                <a href="" class="btn btn-link close-x">x</a>
+                                            </div>
+                                            <div class="dropdowns-in">
+
+                                                <div class="form-cols">
+                                                    <div class="form-row">
+                                                        <div class="label">Adults</div>
+                                                        <div class="label-in">
+                                                            <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-down" type="button" disabled="">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span><input type="text" value="1" name="adults_plane" class="spinner form-control" min="1" max="9" maxlength="1" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-up" type="button">+</button></span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="label">Children (2-12)</div>
+                                                        <div class="label-in">
+                                                            <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-down" type="button" disabled="">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span><input type="text" value="0" name="childs_plane" class="spinner form-control" min="0" max="8" maxlength="1" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-up" type="button">+</button></span></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-row">
+                                                        <div class="label">Infants (0-2)</div>
+                                                        <div class="label-in">
+                                                            <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-down" type="button" disabled="">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span><input type="text" value="0" name="infants_plane" class="spinner form-control" min="0" max="1" maxlength="1" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-up" type="button">+</button></span></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="dropdowns-line">
+                                                <a href="" class="btn close-y">OK</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="bt">
+                                <input type="submit" class="btn btn-lg" value="Search">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form white acs-complex-form">
+                        <div class="acs-expand-container">
+
+
+                            <div class="h-form-line multi-way" rel="0">
+                                <div class="here-there">
+                                    <div class="there">
+                                        <div class="field-block pic-left info-right">
+                                            <input type="text" placeholder="From" class="from-plane" name="from_c_plane[0]" value="Almaty">
+                                            <input type="hidden" name="from_c_plane_id[0]" value="ALA">
+                                            <span class="icon icon-plane-up"></span>
+                                            <div class="info-right-text">ALA</div>
+                                        </div>
+                                    </div>
+                                    <div class="here">
+                                        <div class="field-block pic-left info-right">
+                                            <input type="text" placeholder="To" class="to-plane" name="to_c_plane[0]" value="">
+                                            <input type="hidden" name="to_c_plane_id[0]" value="">
+                                            <span class="icon icon-plane-down"></span>
+                                            <div class="info-right-text"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="whenz-remove-wrap">
+                                    <div class="whenz-remove">
+                                        <div class="whenz">
+                                            <div class="field-block field-block-sm pic-left field-datepicker">
+                                                <input type="text" placeholder="When" class="input-datepicker" name="date_cv_plane[0]" value="2 Apr" readonly="">
+                                                <input type="hidden" name="date_c_plane[0]" value="02.04.2022">
+                                                <span class="icon icon-calendar"></span>
+                                                <div class="info-right-text"></div>
+                                                <div class="dropdowns dropdowns-datepicker white-arrow">
+                                                    <div class="dropdowns-in">
+                                                        <div class="datepics-calendar-dropdown">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <script type="text-html" id="acs-template">
+                <div class="h-form-line multi-way" rel="{i}">
+                    <div class="here-there">
+                        <div class="there">
+                            <div class="field-block pic-left info-right">
+                                <input type="text" placeholder="From" class="from-plane" name="{from_plane}" value="" />
+                                <input type="hidden" name="{from_plane_id}" value="" />
+                                <span class="icon icon-plane-up"></span>
+                                <div class="info-right-text"></div>
+                            </div>
+                        </div>
+                        <div class="here">
+                            <div class="field-block pic-left info-right">
+                                <input type="text" placeholder="To" class="to-plane" name="{to_plane}" value="" />
+                                <input type="hidden" name="{to_plane_id}" value="" />
+                                <span class="icon icon-plane-down"></span>
+                                <div class="info-right-text"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="whenz-remove-wrap">
+                        <div class="whenz-remove">
+                            <div class="whenz">
+                                <div class="field-block field-block-sm pic-left field-datepicker">
+                                    <input type="text" placeholder="When" class="input-datepicker" name="{date_v_plane}" value="" readonly />
+                                    <input type="hidden" name="{date_plane}" value="" />
+                                    <span class="icon icon-calendar"></span>
+                                    <div class="info-right-text"></div>
+                                    <div class="dropdowns dropdowns-datepicker white-arrow">
+                                        <div class="dropdowns-in">
+                                            <div class="datepics-calendar-dropdown">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="acs-remove">
+                                <a href="" class="btn btn-lg"><i class="icon icon-trash"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </script>
+
+                            <div class="h-form-line multi-way-last">
+                                <div class="h-form-line0">
+
+                                    <div class="acs-addline">
+                                        <a href="" class="">+ Add a flight</a>
+                                    </div>
+
+
+                                    <div class="num">
+                                        <div class="field-block field-block-sm pic-left info-right field-datepicker">
+                                            <input type="text" class="dummypeople_plane" value="1 pax" readonly="">
+                                            <span class="icon icon-person"></span>
+                                            <div class="info-right-text">Economy</div>
+                                            <input type="hidden" name="class_plane" value="E">
+                                            <div class="dropdowns dropdowns-passenger">
+                                                <div class="dropdowns-top">
+                                                    <a href="" rel="E" class="btn btn-link choose-class-plane active">Economy</a>
+                                                    <a href="" rel="B" class="btn btn-link choose-class-plane">Business</a>
+                                                    <a href="" class="btn btn-link close-x">x</a>
+                                                </div>
+                                                <div class="dropdowns-in">
+
+                                                    <div class="form-cols">
+                                                        <div class="form-row">
+                                                            <div class="label">Adults</div>
+                                                            <div class="label-in">
+                                                                <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-down" type="button" disabled="">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span><input type="text" value="1" name="adults_plane" class="spinner form-control" min="1" max="9" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-up" type="button">+</button></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="label">Children (2-12)</div>
+                                                            <div class="label-in">
+                                                                <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-down" type="button" disabled="">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span><input type="text" value="0" name="childs_plane" class="spinner form-control" min="0" max="8" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-up" type="button">+</button></span></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="label">Infants (0-2)</div>
+                                                            <div class="label-in">
+                                                                <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-down" type="button" disabled="">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span><input type="text" value="0" name="infants_plane" class="spinner form-control" min="0" max="1" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-up" type="button">+</button></span></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="dropdowns-line">
+                                                    <a href="" class="btn close-y">OK</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bt">
+                                    <input type="submit" class="btn btn-lg" value="Search">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="acs-collapse-container">
+                            <div class="h-form-line multi-way-collapsed">
+                                <div class="h-form-line0">
+                                    <div class="acs-collapsed-line">
+                                        <div class="acs-passengers">
+                                            <table>
+                                                <tbody>
+                                                <tr>
+                                                    <td><i class="icon icon-man1"></i></td>
+                                                    <td><i class="icon icon-children1"></i></td>
+                                                    <td><i class="icon icon-baby1"></i></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>0</td>
+                                                    <td>0</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="acs-flights">
+                                            <div class="acs-flight">
+                                                ALA —                                 <b>2 Apr</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!--                <div class="top-slider">-->
+<!--                    <div class="bx-wrapper" style="max-width: 100%;"><div class="bx-viewport" aria-live="polite" style="width: 100%; overflow: hidden; position: relative; height: 0px;"><ul id="top-slider" style="width: auto; position: relative;">    <li style="float: none; list-style: none; position: absolute; width: 100px; z-index: 50; display: block;" aria-hidden="false">-->
+<!--                        <a href="/to/city/DME/OW/0/0/1?from=ALA">-->
+<!--                            <span class="icon icon-star-round"></span>-->
+<!--                            <span class="yellow">Moscow</span>-->
+<!--                            <div class="icon-type">-->
+<!--                                <span class="icon icon-plane-here-there"></span>-->
+<!--                            </div>-->
+<!--                            <div class="slide-block">-->
+<!--                                from <span class="price">16&nbsp;216 <span class="currency  ruble">P</span></span>                with stops            </div>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                        <li style="float: none; list-style: none; position: absolute; width: 100px; z-index: 0; display: none;" aria-hidden="true">-->
+<!--                            <a href="/to/city/IST/OW/0/0/1?from=ALA">-->
+<!--                                <span class="icon icon-star-round"></span>-->
+<!--                                <span class="yellow">Istanbul</span>-->
+<!--                                <div class="icon-type">-->
+<!--                                    <span class="icon icon-plane-here-there"></span>-->
+<!--                                </div>-->
+<!--                                <div class="slide-block">-->
+<!--                                    from <span class="price thou10">15&nbsp;046 <span class="currency  ruble">P</span></span>                with stops            </div>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li style="float: none; list-style: none; position: absolute; width: 100px; z-index: 0; display: none;" aria-hidden="true">-->
+<!--                            <a href="/to/city/AYT/OW/0/0/1?from=ALA">-->
+<!--                                <span class="icon icon-star-round"></span>-->
+<!--                                <span class="yellow">Antalya</span>-->
+<!--                                <div class="icon-type">-->
+<!--                                    <span class="icon icon-plane-here-there"></span>-->
+<!--                                </div>-->
+<!--                                <div class="slide-block">-->
+<!--                                    from <span class="price thou10">17&nbsp;408 <span class="currency  ruble">P</span></span>                with stops            </div>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li style="float: none; list-style: none; position: absolute; width: 100px; z-index: 0; display: none;" aria-hidden="true">-->
+<!--                            <a href="/to/city/NQZ/OW/0/0/1?from=ALA">-->
+<!--                                <span class="icon icon-star-round"></span>-->
+<!--                                <span class="yellow">Nur-Sultan</span>-->
+<!--                                <div class="icon-type">-->
+<!--                                    <span class="icon icon-plane-here-there"></span>-->
+<!--                                </div>-->
+<!--                                <div class="slide-block">-->
+<!--                                    from <span class="price">2&nbsp;912 <span class="currency  ruble">P</span></span>                direct flight            </div>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li style="float: none; list-style: none; position: absolute; width: 100px; z-index: 0; display: none;" aria-hidden="true">-->
+<!--                            <a href="/to/city/DXB/OW/0/0/1?from=ALA">-->
+<!--                                <span class="icon icon-star-round"></span>-->
+<!--                                <span class="yellow">Dubai</span>-->
+<!--                                <div class="icon-type">-->
+<!--                                    <span class="icon icon-plane-here-there"></span>-->
+<!--                                </div>-->
+<!--                                <div class="slide-block">-->
+<!--                                    from <span class="price">16&nbsp;851 <span class="currency  ruble">P</span></span>                with stops            </div>-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    </ul></div><div class="bx-controls bx-has-pager"><div class="bx-pager bx-default-pager"><div class="bx-pager-item"><a href="" data-slide-index="0" class="bx-pager-link active">1</a></div><div class="bx-pager-item"><a href="" data-slide-index="1" class="bx-pager-link">2</a></div><div class="bx-pager-item"><a href="" data-slide-index="2" class="bx-pager-link">3</a></div><div class="bx-pager-item"><a href="" data-slide-index="3" class="bx-pager-link">4</a></div><div class="bx-pager-item"><a href="" data-slide-index="4" class="bx-pager-link">5</a></div></div></div></div>-->
+<!--                </div>-->
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function() {
+
+
+        let header = $("#header");
+        let intro=$("#intro");
+        let introH;
+        let scrollPos = $(window).scrollTop();
+
+        $(window).on("scroll resize" , function(){
+            introH = intro.innerHeight();
+            scrollPos = $(this).scrollTop();
+            chekScroll(scrollPos,introH);
+
+        });
+        function chekScroll(scrollPos,introH){
+            if(scrollPos>introH){
+                header.addClass("fixed");
+            }else{
+                header.removeClass("fixed");
+            }
+        }
+
+        $("[data-scroll]").on("click",function(event){
+            event.preventDefault();
+            let elementId = $(this).data('scroll');
+            let elementOffset= $(elementId).offset().top;
+            $("html,body").animate({
+                scrollTop:elementOffset - 90
+            },700);
+        });
+
+
+        let nav = $("#nav");
+        let nav_toggle = $("#nav_toggle");
+        nav__toggle.on("click ", function(event){
+            event.preventDefault();
+            nav.toggleClass("show");
+        });
+    });
+</script>
+
+
+</body>
+</html>
