@@ -28,6 +28,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated().and()
                 .formLogin();
+
+//        //form login
+//                .csrf().disable().formLogin()
+//                .loginPage("/login")
+//                .failureUrl("/login?error=true")
+//                .defaultSuccessUrl("/home")
+//                .usernameParameter("email")
+//                .passwordParameter("password")
+//                .and()
+//                //logout
+//                .logout()
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+//                .logoutSuccessUrl("/").and()
+//                .exceptionHandling()
+//                .accessDeniedPage("/access-denied");
     }
 
     @Override

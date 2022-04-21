@@ -3,6 +3,7 @@ package com.example.takeiteasy.model;
 import lombok.*;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
