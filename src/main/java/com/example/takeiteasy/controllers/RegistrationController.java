@@ -33,15 +33,15 @@ public class RegistrationController {
         return modelAndView;
     }
 
-    @PostMapping(value = "/registration", consumes = "application/json", produces = "application/json")
-    public ModelAndView register(@RequestBody RegistrationRequest request, Errors errors,
+    @PostMapping(value = "/registration", consumes = {"*/*"})
+    public String register(@RequestBody RegistrationRequest request, Errors errors,
                                  SessionStatus sessionStatus) {
 
         ModelAndView mv = new ModelAndView();
         if (errors.hasErrors()) {
             mv.setViewName("registration");
             mv.addObject("user", request);
-            return mv;
+            return "registration";
         }
         mv.setViewName("main");
         mv.addObject("title", "TakeItEasy");
@@ -49,7 +49,7 @@ public class RegistrationController {
         registerationService.register(request);
         sessionStatus.setComplete();
 
-        return mv;
+        return "main";
     }
 
     @GetMapping("/registration/confirm")

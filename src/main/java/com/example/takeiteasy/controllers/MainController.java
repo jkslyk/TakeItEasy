@@ -12,10 +12,5 @@ public class MainController {
         model.addObject("title", "TakeItEasy");
         return "main";
     }
-//    @PostMapping("/register")
-//    public String register(@ModelAttribute("User") User user, HttpSession session, Model model) {
-//        model.addAttribute("title", "Registration");
-//        return "redirect:/registration";
-//    }
 
 }
