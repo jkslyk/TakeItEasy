@@ -59,7 +59,7 @@ public class RegistrationService {
         confirmationTokenService.setConfirmedAt(token);
         userService.enableUser(
                 confirmationToken.getUser().getEmail());
-        return "confirmed";
+        return "main";
     }
 
 //    public boolean getExpiredOrNot() {

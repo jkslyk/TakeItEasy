@@ -6,13 +6,18 @@ import com.example.takeiteasy.services.ConfirmationTokenService;
 import com.example.takeiteasy.services.RegistrationService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.Errors;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+import javax.validation.Valid;
+
+@Controller
 @RequestMapping()
 @AllArgsConstructor
 @Slf4j
@@ -20,39 +25,39 @@ import org.springframework.web.servlet.ModelAndView;
 public class RegistrationController {
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
 
-    @Autowired(required = false)
+    @Autowired
     private final RegistrationService registerationService;
     private ConfirmationTokenService confirmationTokenService;
+    private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
 
-    @GetMapping(value = "/registration", produces = "application/json")
-    @ResponseBody
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        webDataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
+    @GetMapping(value = "registration", produces = "application/json")
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("user", new User());
-        modelAndView.setViewName("/registration");
+        modelAndView.addObject("registration", new RegistrationRequest());
+        modelAndView.setViewName("registration");
         return modelAndView;
     }
 
-    @PostMapping(value = "/registration", consumes = {"*/*"})
-    public String register(@RequestBody RegistrationRequest request, Errors errors,
-                                 SessionStatus sessionStatus) {
+    @PostMapping(value = "registration")
+    public ModelAndView register(@Valid RegistrationRequest registration) {
 
+        System.out.println("check");
         ModelAndView mv = new ModelAndView();
-        if (errors.hasErrors()) {
-            mv.setViewName("registration");
-            mv.addObject("user", request);
-            return "registration";
-        }
         mv.setViewName("main");
         mv.addObject("title", "TakeItEasy");
-        mv.addObject("user", request);
-        registerationService.register(request);
-        sessionStatus.setComplete();
+        mv.addObject("user", registration);
+        registerationService.register(registration);
 
-        return "main";
+        return mv;
     }
 
-    @GetMapping("/registration/confirm")
+    @GetMapping("registration/confirm")
     public String confirm(@RequestParam("token") String token) {
         return registerationService.confirmToken(token);
     }

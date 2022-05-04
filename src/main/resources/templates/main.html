@@ -8,46 +8,66 @@
     <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
 
-<body>
-
-    <header th:insert="blocks/header ::  header"></header>
-
-    div class="search">
-    <div class="search-panel active">
-        <form id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
-            <div class="search_item">
-                <div>from</div>
-                <input type="text" class="from search_input" required="required">
+<!--Header-->
+<header class="header" id="header">
+    <div class="container">
+        <div class="header__inner">
+            <div class="header__logo">
+                <h1 class="header__logo">TakeItEasy</h1>
             </div>
-            <div class="search_item">
-                <div>to</div>
-                <input type="text" class="to search_input" required="required">
-            </div>
-            <div class="search_item">
-                <div>date</div>
-                <input type="date" class="check_in search_input">
-            </div>
-            <div class="search_item">
-                <div>adults</div>
-                <select name="adults" id="adults_1" class="dropdown_item_select search_input">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-            </div>
-            <div class="search_item">
-                <div>children</div>
-                <select name="children" id="children_1" class="dropdown_item_select search_input">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
-            </div>
-            <div class="search_item" id="srbtn">
-                <button class="button search_button">search<span></span><span></span><span></span></button>
-            </div>
-        </form>
+            <nav class="nav" id="nav">
+                <a class="nav__link" href="#" data-scroll="#features" >My personal account</a>
+                <a class="nav__link" href="#"data-scroll="#works">Travellers</a>
+                <a class="nav__link" href="#"data-scroll="#team">Services</a>
+                <a class="nav__link" href="#"data-scroll="#background"> Promotions </a>
+                <a class="nav__link" href="#"data-scroll="#reviews"></a>
+                <!--<a class="nav__link" href="#"data-scroll="#download">Download</a>-->
+            </nav>
+            <button class="burger" type="button" id="nav__toggle">
+                <span class="burger__item"></span>
+            </button>
+        </div>
     </div>
+
+
+    <div class="search">
+        <div class="search-panel active">
+            <form id="search_form_1" class="search_panel_content d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-between justify-content-start">
+                <div class="search_item">
+                    <div>from</div>
+                    <input type="text" class="from search_input" required="required">
+                </div>
+                <div class="search_item">
+                    <div>to</div>
+                    <input type="text" class="to search_input" required="required">
+                </div>
+                <div class="search_item">
+                    <div>date</div>
+                    <input type="date" class="check_in search_input">
+                </div>
+                <div class="search_item">
+                    <div>adults</div>
+                    <select name="adults" id="adults_1" class="dropdown_item_select search_input">
+                        <option>01</option>
+                        <option>02</option>
+                        <option>03</option>
+                    </select>
+                </div>
+                <div class="search_item">
+                    <div>children</div>
+                    <select name="children" id="children_1" class="dropdown_item_select search_input">
+                        <option>0</option>
+                        <option>02</option>
+                        <option>03</option>
+                    </select>
+                </div>
+                <div class="search_item" id="srbtn">
+                    <button class="button search_button">search<span></span><span></span><span></span></button>
+                </div>
+            </form>
+        </div>
+
+</header>
 <!--Intro-->
 <div class="intro" id="intro">
 

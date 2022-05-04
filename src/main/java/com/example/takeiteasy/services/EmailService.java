@@ -31,7 +31,7 @@ public class EmailService implements EmailSender {
             mimeMessageHelper.setFrom("190103366@stu.sdu.edu.kz");
             mailSender.send(mimeMessage);
         }catch(MessagingException e){
-            LOGGER.error("failed to send email", e);
+//            LOGGER.error("failed to send email", e);
             throw new IllegalStateException("failed to send email");
         }
 

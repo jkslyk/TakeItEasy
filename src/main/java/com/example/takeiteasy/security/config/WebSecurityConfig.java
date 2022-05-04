@@ -4,6 +4,7 @@ import com.example.takeiteasy.services.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,13 +22,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http
+                .headers()
+                .frameOptions().sameOrigin()
+                .and()
                 .authorizeRequests()
-                .antMatchers("/registration/**")
-                .permitAll()
+                .antMatchers("/", "/flight/search","/flight/book/verify", "/flight/book/cancel", "/css/**").permitAll()
+                .antMatchers("/**", "/flight/book**", "/flight/book/new").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated().and()
-                .formLogin();
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/")
+                .failureUrl("/login?error")
+                .usernameParameter("email")
+                .passwordParameter("password")
+                .permitAll()
+                .and()
+                .logout().permitAll()
+                .and()
+                .csrf().disable()
+                .exceptionHandling().accessDeniedPage("/403");
 
 //        //form login
 //                .csrf().disable().formLogin()
@@ -56,5 +71,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         provider.setPasswordEncoder(bCryptPasswordEncoder);
         provider.setUserDetailsService(userService);
         return provider;
+    }
+
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
     }
 }

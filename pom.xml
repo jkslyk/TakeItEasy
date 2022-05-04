@@ -127,7 +127,7 @@
         </dependency>
         <dependency>
             <groupId>org.thymeleaf</groupId>
-            <artifactId>thymeleaf-spring5</artifactId>
+            <artifactId>thymeleaf</artifactId>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -146,6 +146,24 @@
             <groupId>cn.crabapples</groupId>
             <artifactId>mail-spring-boot-starter</artifactId>
             <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>nz.net.ultraq.thymeleaf</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
+            <version>3.1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+            <version>2.6.7</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+            <version>3.0.4.RELEASE</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
