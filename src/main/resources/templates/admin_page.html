@@ -25,7 +25,7 @@
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
-            <th:block sec:authorize="hasRole('ADMIN')">
+            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                 <li class="nav-item">
                     <a class="nav-link" href="/airports">Airports</a>
                 </li>
@@ -36,7 +36,7 @@
                     <a class="nav-link" href="/flights">Flights</a>
                 </li>
             </th:block>
-            <th:block sec:authorize="hasRole('ADMIN')">
+            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
                 <li class="nav-item">
                     <a class="nav-link" href="/flight/book">Book Flight</a>
                 </li>

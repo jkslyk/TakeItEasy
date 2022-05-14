@@ -12,21 +12,19 @@ import java.util.List;
 
 @Entity
 @Getter
-@EqualsAndHashCode
 @Setter
+@EqualsAndHashCode
 public class Flight {
     @SequenceGenerator(
             name = "flight_sequence",
             sequenceName = "flight_sequence",
             allocationSize = 1
-
     )
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "flight_sequence"
     )
-
     private long flightId;
     private String flightNumber;
     @ManyToOne
@@ -35,16 +33,11 @@ public class Flight {
     private Airport destinationAirport;
     private LocalDate departureDate;
     private LocalDate arrivalDate;
-
     private String departureTime;
-
     private String arrivalTime;
-
     private double flightCharge;
-
     @ManyToOne
     Aircraft aircraft;
-
     @OneToMany(mappedBy = "flight")
     List<Passenger> passengers = new ArrayList<>();
 

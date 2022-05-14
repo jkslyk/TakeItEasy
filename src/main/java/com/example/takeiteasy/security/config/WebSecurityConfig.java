@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -16,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @AllArgsConstructor
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true,securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserService userService;
@@ -23,26 +25,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .headers()
-                .frameOptions().sameOrigin()
-                .and()
+                .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/flight/search","/flight/book/verify", "/flight/book/cancel", "/css/**").permitAll()
-                .antMatchers("/**", "/flight/book**", "/flight/book/new").hasRole("ADMIN")
+                .antMatchers("/", "/registration/**", "/css/**").permitAll()
                 .anyRequest()
-                .authenticated().and()
+                .authenticated()
+                .and()
+                .httpBasic()
+                .and()
                 .formLogin()
                 .loginPage("/login")
+                .permitAll()
                 .defaultSuccessUrl("/")
                 .failureUrl("/login?error")
                 .usernameParameter("email")
                 .passwordParameter("password")
-                .permitAll()
                 .and()
                 .logout().permitAll()
                 .and()
-                .csrf().disable()
-                .exceptionHandling().accessDeniedPage("/403");
+                .exceptionHandling();
 
 //        //form login
 //                .csrf().disable().formLogin()

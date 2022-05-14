@@ -7,14 +7,14 @@ import com.example.takeiteasy.services.AircraftService;
 import com.example.takeiteasy.services.AirportService;
 import com.example.takeiteasy.services.FlightService;
 import com.example.takeiteasy.services.PassengerService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
@@ -22,6 +22,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
+@RequestMapping
+@AllArgsConstructor
+@Slf4j
 public class TicketController {
 
     @Autowired
@@ -34,12 +37,14 @@ public class TicketController {
     PassengerService passengerService;
 
     @GetMapping("/flight/book")
+    @PreAuthorize("hasRole('ADMIN')")
     public String showBookFlightPage(Model model) {
         model.addAttribute("airports", airportService.getAllAirports());
         return "book_flight";
     }
 
     @PostMapping("/flight/book")
+    @PreAuthorize("hasRole('ADMIN')")
     public String searchFlightToBook(@RequestParam("departureAirport") int departureAirport,
                                      @RequestParam("destinationAirport") int destinationAirport,
                                      @RequestParam("departureTime") String departureTime,
@@ -65,6 +70,7 @@ public class TicketController {
     }
 
     @GetMapping("/flight/book/new")
+    @PreAuthorize("hasRole('ADMIN')")
     public String showCustomerInfoPage(@RequestParam long flightId, Model model) {
         model.addAttribute("flightId", flightId);
         model.addAttribute("passenger", new Passenger());
@@ -72,6 +78,7 @@ public class TicketController {
     }
 
     @PostMapping("/flight/book/new")
+    @PreAuthorize("hasRole('ADMIN')")
     public String bookFlight(@Valid @ModelAttribute("passenger") Passenger passenger, BindingResult bindingResult, @RequestParam("flightId") long flightId, Model model) {
         Flight flight = flightService.getFlightById(flightId);
         Passenger passenger1 = passenger;
@@ -82,11 +89,13 @@ public class TicketController {
     }
 
     @GetMapping("/flight/book/verify")
+    @PreAuthorize("hasRole('ADMIN')")
     public String showVerifyBookingPage() {
         return "verify_booking";
     }
 
     @PostMapping("/flight/book/verify")
+    @PreAuthorize("hasRole('ADMIN')")
     public String showVerifyBookingPageResult(@RequestParam("flightId") long flightId,
                                               @RequestParam("passengerId") long passengerId,
                                               Model model) {
@@ -116,6 +125,7 @@ public class TicketController {
     }
 
     @PostMapping("/flight/book/cancel")
+    @PreAuthorize("hasRole('ADMIN')")
     public String cancelTicket(@RequestParam("passengerId") long passengerId, Model model){
         passengerService.deletePassengerById(passengerId);
         model.addAttribute("flights", flightService.getAllFlightsPaged(0));

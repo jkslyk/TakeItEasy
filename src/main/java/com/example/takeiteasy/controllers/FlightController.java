@@ -5,19 +5,22 @@ import com.example.takeiteasy.services.AircraftService;
 import com.example.takeiteasy.services.AirportService;
 import com.example.takeiteasy.services.FlightService;
 import com.example.takeiteasy.services.PassengerService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 
 @Controller
+@RequestMapping
+@AllArgsConstructor
+@Slf4j
 public class FlightController {
     @Autowired
     AirportService airportService;
@@ -29,6 +32,7 @@ public class FlightController {
     PassengerService passengerService;
 
     @GetMapping("/flight/new")
+    @PreAuthorize("hasRole('ADMIN')")
     public String showNewFlightPage(Model model) {
         model.addAttribute("flight", new Flight());
         model.addAttribute("aircrafts", aircraftService.getAllAircrafts());
@@ -37,6 +41,7 @@ public class FlightController {
     }
 
     @PostMapping("/flight/new")
+    @PreAuthorize("hasRole('ADMIN')")
     public String saveFlight(@Valid @ModelAttribute("flight") Flight flight, BindingResult bindingResult,
                              @RequestParam("departureAirport") int departureAirport,
                              @RequestParam("destinationAirport") int destinationAirport,
@@ -60,6 +65,7 @@ public class FlightController {
             return "new_flight";
         }
 
+        System.out.println("WE GOT HERERERERERERER:>>>>>>>>>>>>>>>>>" + aircraftService.getAircraftById(aircraftId) + " " + airportService.getAirportById(departureAirport));
         flight.setAircraft(aircraftService.getAircraftById(aircraftId));
         flight.setDepartureAirport(airportService.getAirportById(departureAirport));
         flight.setDestinationAirport(airportService.getAirportById(destinationAirport));
@@ -73,6 +79,7 @@ public class FlightController {
     }
 
     @GetMapping("/flight/delete")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteFlight(@PathParam("flightId") long flightId, Model model){
         flightService.deleteFlightById(flightId);
         model.addAttribute("flights", flightService.getAllFlightsPaged(0));
@@ -81,6 +88,7 @@ public class FlightController {
     }
 
     @GetMapping("/flights")
+    @PreAuthorize("hasRole('ADMIN')")
     public String showFlightsList(@RequestParam(defaultValue = "0") int pageNo, Model model) {
         model.addAttribute("flights", flightService.getAllFlightsPaged(pageNo));
         model.addAttribute("currentPage", pageNo);
